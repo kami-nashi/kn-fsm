@@ -1,0 +1,36 @@
+# table::coaches
+coach_id        coach_lname     coach_fname     coach_rate
+1               Dasha           Kabanova        30
+2               Stephanie       Bardykin        35
+
+# table::locations
+location_id     location_title          location_city   location_state
+1               Raleigh Ice Plex        Raleigh         NC
+2               Cleland Ice Rink        Ft Bragg        NC
+
+# table::ice_time
+key     date_id         ice_time        ice_cost        coach_time
+1       20150101        60              14              30
+2       20150201        30              7               0
+
+create database kn_fsm;
+create table coaches ( id INT AUTO_INCREMENT PRIMARY KEY, coach_fname varchar(20), coach_lname varchar(20), coach_rate INT );
+insert into coaches(coach_fname,coach_lname,coach_rate) values('Stephanie','Bardykin',35);
+
+create table locations ( id INT AUTO_INCREMENT PRIMARY KEY, location_id varchar(30), location_city varchar(20), location_state varchar(20) );
+insert into locations values (2,'Cleland Ice Rink','Fayetteville','NC');
+select * from locations where location_state = 'NC';
+select * from locations;
+
+CREATE TABLE ice_time ( id INT AUTO_INCREMENT PRIMARY KEY, date DATE NOT NULL, ice_time INT NOT NULL, ice_cost INT NOT NULL, coach_time INT );
+insert into ice_time(date,ice_time,ice_cost) values( NOW,'60',14);
+insert into ice_time(date,ice_time,ice_cost) values( '2016-01-01',60,14);
+
+ALTER TABLE ice_time ADD COLUMN coach_id INT AFTER coach_time;
+
+SELECT t1.*, t2.* FROM t1, t2 WHERE t1.i1 = t2.i2;
+SELECT ice_time.*, coaches.* FROM ice_time, coaches WHERE ice_time.coach_id = coaches.id;
+SELECT ice_time.*, coaches.*, locations.* FROM ice_time, coaches WHERE ice_time.coach_id = coaches.id, locations WHERE ice_time.rink_id = locations.id;
+
+select * from ice_time, coaches, locations where ice_time.coach_id = ice_time.coach_id and coaches.id = ice_time.coach_id and locations.id = ice_time.rink_id;
+select * from ice_time, coaches, locations where ice_time.coach_id = 2 and coaches.id = ice_time.coach_id and locations.id = ice_time.rink_id;

@@ -1,16 +1,8 @@
 <?php
 
-if (!$link = mysql_connect('localhost', '$USER', '$SECRETS')) {
-    echo 'Could not connect to mysql';
-    exit;
-}
+require_once '../include.d/db_connect.php';
 
-if (!mysql_select_db('kn_fsm', $link)) {
-    echo 'Could not select database';
-    exit;
-}
-
-$sql    = 'select * from ice_time, coaches, locations, ice_type where ice_time.coach_id = ice_time.coach_id and coaches.id = ice_time.coach_id and locations.id = ice_time.rink_id and ice_type.id = ice_time.skate_type';
+$sql = 'select * from ice_time, coaches, locations, ice_type where ice_time.coach_id = ice_time.coach_id and coaches.id = ice_time.coach_id and locations.id = ice_time.rink_id and ice_type.id = ice_time.skate_type ORDER BY date DESC';
 
 $result = mysql_query($sql, $link);
 
@@ -51,4 +43,3 @@ echo "<p>" . $ti_time . " Total Hours <span>" . $ice_cost  . " Ice Cost</span> <
 echo "<p>" . $tc_time . " Coached Hours <span>" . $final_coach_rate . " Dollars </span></p>";
 
 ?>
-

@@ -102,6 +102,15 @@ echo '
               <a class="nav-link" href="#">Workshops</a>
             </li>
           </ul>
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/kami-nashi/kn-fsm/">Git Repo for KN-FSM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://docs.google.com/spreadsheets/d/10NnDnV2HpXcRsGWtajCnOiUfoitcLQloFosvLXYcEMU">Original Google Doc</a>
+            </li>
+          </ul>
+
         </nav>
 
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">

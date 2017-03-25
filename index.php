@@ -1,5 +1,7 @@
 <?php
 require_once 'include.d/db_connect.php';
+require_once 'include.d/data_static.php';
+
 $sql = 'select * from ice_time, coaches, locations, ice_type where ice_time.coach_id = ice_time.coach_id and coaches.id = ice_time.coach_id and locations.id = ice_time.rink_id and ice_type.id = ice_time.skate_type ORDER BY date DESC';
 $result = mysql_query($sql, $link);
 if (!$result) {
@@ -12,6 +14,10 @@ $total_ice = 0;
 $ice_cost = 0;
 $sum_coach_time = 0;
 $final_coach_rate = 0;
+
+#Basic Math
+$ti_time = $total_ice / 60;
+$tc_time = $sum_coach_time / 60;
 
 echo '
 
@@ -102,9 +108,15 @@ echo '
           <h1>Dashboard</h1>
 
           <section class="row text-center placeholders">
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
+            <div class="col-6 col-sm-3 placeholder">';
+
+require 'include.d/functions.php';
+	add_ICETIME();
+	add_COACHTIME();
+
+echo '
+
+              <h4>Totals</h4>
               <div class="text-muted">Something else</div>
             </div>
             <div class="col-6 col-sm-3 placeholder">

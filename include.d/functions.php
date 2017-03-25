@@ -23,9 +23,11 @@ function add_ICETIME() {
 	# basic math
 	$ice_time = $ice / 60;
 
+	return array($ice_cost, $ice_time);
+
 	# diag stuff
-	echo "<p>" . $ice_time . " Skating Hours </p>";
-	echo "<p>$" . $ice_cost . " Costs in Ice</p>";
+	#echo "<p>" . $ice_time . " Skating Hours </p>";
+	#echo "<p>$" . $ice_cost . " Costs in Ice</p>";
 
 }
 
@@ -56,9 +58,22 @@ function add_COACHTIME() {
 	$coach_hours = $coach_minutes / 60;
 	$coach_total = $coach_minutes * $coach_minutely; 
 
+	return array($coach_total, $coach_hours);
+
 	# diag stuff
-	echo "<p>" . number_format($coach_hours, 2, '.', '') . " in Coached Hours </p>";
-	echo "<p>$" . number_format($coach_total, 2, '.', '') . " in Coach Costs </p>";
+	#echo "<p>" . number_format($coach_hours, 2, '.', '') . " in Coached Hours </p>";
+	#echo "<p>$" . number_format($coach_total, 2, '.', '') . " in Coach Costs </p>";
+
+}
+
+function add_TOTALS(){
+	
+	$ice = add_ICETIME();
+	$coach = add_COACHTIME();
+
+	$cost = $ice[0] + $coach[0];
+
+	echo $cost;
 
 }
 

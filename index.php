@@ -111,13 +111,27 @@ echo '
             <div class="col-6 col-sm-3 placeholder">';
 
 require 'include.d/functions.php';
-	add_ICETIME();
-	add_COACHTIME();
+
+	$ice = add_ICETIME();
+	$coach = add_COACHTIME();
+
+	echo "<p>" . $ice[1] . " in Skated Hours </p>";
+	echo "<p>$" . number_format($ice[0], 2, '.', '') . " in Ice Cost </p>";
+
+	echo "<p>" . $coach[1] . " in Coached Hours </p>";
+	echo "<p>$" . number_format($coach[0], 2, '.', '') . " in Coached Cost </p>";
+
+	$cost = $ice[0] + $coach[0];
+
 
 echo '
 
               <h4>Totals</h4>
-              <div class="text-muted">Something else</div>
+              <div class="text-muted">';
+
+echo "$" . $cost;
+
+	echo '</div>
             </div>
             <div class="col-6 col-sm-3 placeholder">
               <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">

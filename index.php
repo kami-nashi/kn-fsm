@@ -119,18 +119,9 @@ echo '
           <section class="row text-center placeholders">
             <div class="col-6 col-sm-3 placeholder">';
 
-require 'include.d/functions.php';
+	
+	require 'include.d/table_overview.php';	
 
-	$ice = add_ICETIME();
-	$coach = add_COACHTIME();
-
-	echo "<p>" . $ice[1] . " in Skated Hours </p>";
-	echo "<p>$" . number_format($ice[0], 2, '.', '') . " in Ice Cost </p>";
-
-	echo "<p>" . $coach[1] . " in Coached Hours </p>";
-	echo "<p>$" . number_format($coach[0], 2, '.', '') . " in Coached Cost </p>";
-
-	$cost = $ice[0] + $coach[0];
 
 
 echo '

@@ -13,6 +13,25 @@ key     date_id         ice_time        ice_cost        coach_time
 1       20150101        60              14              30
 2       20150201        30              7               0
 
+# table::event_pac
+id	event_type	location_id	club_id	coach_id program_id	equip_conf	cost	date	video	url	notes	name
+
+# table::programs
+id	name		duration	level	music_artist	music_album	music_title	music_url	 video		notes		version	date_state	date_end
+
+# table::classes
+id	name	class_type	cost	session_legnth	date_start	date_end	level_target	location_id	coach_id	conf_id
+
+# table::equipment_inv
+id	type	model	size	color	cost_new	cost_used	cost_actual	vendor	warranty	date	status	notes
+
+# table::equipment_conf
+id	skate_boot	skate_blade	conf_id
+
+# table::equipment_maint
+id	conf_id	location_id	date	cost	maint_type	hours_on
+
+
 create database kn_fsm;
 create table coaches ( id INT AUTO_INCREMENT PRIMARY KEY, coach_fname varchar(20), coach_lname varchar(20), coach_rate INT );
 insert into coaches(coach_fname,coach_lname,coach_rate) values('Stephanie','Bardykin',35);

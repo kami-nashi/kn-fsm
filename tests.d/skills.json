@@ -1,0 +1,221 @@
+{
+"name": "flare",
+ "children": [
+  {
+   "name": "Basic Skills",
+   "children": [
+    {
+     "name": "Basic 1",
+     "children": [
+      {"name": "Stopping", "size": 938},
+      {"name": "Stroking", "size": 3812},
+      {"name": "Gliding", "size": 674},
+      {"name": "Edging", "size": 743}
+      ]
+    },
+    {
+     "name": "Basic 2",
+     "children": [
+      {"name": "Better Stopping", "size": 9328},
+      {"name": "Stronger Stroking", "size": 382},
+      {"name": "Stable Gliding", "size": 6154},
+      {"name": "Agressive Edging", "size": 7400}
+    ]
+    },
+    { 
+     "name": "Basic 3",
+     "children": [
+      {"name": "Better Stopping", "size": 39638},
+      {"name": "Stronger Stroking", "size": 5812},
+      {"name": "Stable Gliding", "size": 6674},
+      {"name": "Agressive Edging", "size": 76543}
+    ]
+    },
+    { 
+     "name": "Basic 4",
+     "children": [
+      {"name": "Better Stopping", "size": 3693},
+      {"name": "Stronger Stroking", "size": 3612},
+      {"name": "Stable Gliding", "size": 67194},
+      {"name": "Agressive Edging", "size": 703}
+    ]
+    },
+    { 
+     "name": "Basic 5",
+     "children": [
+      {"name": "Better Stopping", "size": 3928},
+      {"name": "Stronger Stroking", "size": 8512},
+      {"name": "Stable Gliding", "size": 671},
+      {"name": "Agressive Edging", "size": 10743}
+    ]
+    },
+    { 
+     "name": "Basic 6",
+     "children": [
+      {"name": "Better Stopping", "size": 3388},
+      {"name": "Stronger Stroking", "size": 33812},
+      {"name": "Stable Gliding", "size": 6761},
+      {"name": "Agressive Edging", "size": 73}
+    ]
+    },
+    { 
+     "name": "Basic 7",
+     "children": [
+      {"name": "Better Stopping", "size": 3968},
+      {"name": "Stronger Stroking", "size": 8312},
+      {"name": "Stable Gliding", "size": 6751},
+      {"name": "Agressive Edging", "size": 753}
+    ]
+    },
+    { 
+     "name": "Basic 8",
+     "children": [
+      {"name": "Better Stopping", "size": 3988},
+      {"name": "Stronger Stroking", "size": 8612},
+      {"name": "Stable Gliding", "size": 6741},
+      {"name": "Agressive Edging", "size": 7143}
+    ]
+    }
+   ]
+  },
+{
+   "name": "Dramatic",
+   "children": [
+    {
+     "name": "Dramatic 1",
+     "children": [
+      {"name": "WTF", "size": 32938},
+      {"name": "Way too much", "size": 38162},
+      {"name": "Ok, a little easier", "size": 67814},
+      {"name": "Put it all together", "size": 7413}
+      ]
+    }
+  ]
+ },
+{
+   "name": "Free Skate",
+   "children": [
+    {
+     "name": "Free 1",
+     "children": [
+      {"name": "Stopping", "size": 32938},
+      {"name": "Stroking", "size": 38162},
+      {"name": "Gliding", "size": 67814},
+      {"name": "Edging", "size": 7413}
+      ]
+    },
+    {
+     "name": "Free 2",
+     "children": [
+      {"name": "Better Stopping", "size": 23938},
+      {"name": "Stronger Stroking", "size": 30812},
+      {"name": "Stable Gliding", "size": 67145},
+      {"name": "Agressive Edging", "size": 74233}
+    ]
+    },
+    {
+     "name": "Free 3",
+     "children": [
+      {"name": "Better Stopping", "size": 39318},
+      {"name": "Stronger Stroking", "size": 38612},
+      {"name": "Stable Gliding", "size": 67194},
+      {"name": "Agressive Edging", "size": 744}
+    ]
+    },
+    {
+     "name": "Free 4",
+     "children": [
+      {"name": "Better Stopping", "size": 39312},
+      {"name": "Stronger Stroking", "size": 23802},
+      {"name": "Stable Gliding", "size": 67484},
+      {"name": "Agressive Edging", "size": 7823}
+    ]
+    },
+    {
+     "name": "Free 5",
+     "children": [
+      {"name": "Better Stopping", "size": 39348},
+      {"name": "Stronger Stroking", "size": 32612},
+      {"name": "Stable Gliding", "size": 67174},
+      {"name": "Agressive Edging", "size": 7413}
+    ]
+    },
+    {
+     "name": "Free 6",
+     "children": [
+      {"name": "Better Stopping", "size": 39318},
+      {"name": "Stronger Stroking", "size": 35812},
+      {"name": "Stable Gliding", "size": 67141},
+      {"name": "Agressive Edging", "size": 7433}
+    ]
+    }
+   ]
+  },
+{
+   "name": "Adult Skills",
+   "children": [
+    {
+     "name": "Adult 1",
+     "children": [
+      {"name": "Falling & Recovery", "size": 32938},
+      {"name": "Forward Marching", "size": 38162},
+      {"name": "Forward two foot glide", "size": 67814},
+      {"name": "Forward swizzle 4 - 6 in a row", "size": 7413},
+      {"name": "Forward Snowplow stop", "size": 32561}
+      ]
+    },
+    { 
+     "name": "Adult 2",
+     "children": [
+      {"name": "Forward stroking across width of ice", "size": 32938},
+      {"name": "Forward one foot glides", "size": 38162},
+      {"name": "Forward slaloms", "size": 67814},
+      {"name": "Backwards skating", "size": 7413},
+      {"name": "Backwards swizzles 4 to 6 in a row", "size": 32561}
+      ]
+    },
+    {
+     "name": "Adult 3",
+     "children": [
+      {"name": "Forward stroking using blade properly", "size": 32938},
+      {"name": "Forward half swizzle pumps on circle, CCW|CW R|L", "size": 38162},
+      {"name": "Forward chasses on circle, CCW|CW", "size": 67814},
+      {"name": "Backwards skating into 2 foot glide", "size": 7413},
+      {"name": "Backwards snowplow stop R|L", "size": 32561}
+      ]
+    },
+    {
+     "name": "Adult 4",
+     "children": [
+      {"name": "Forward OE on circle R|L", "size": 32938},
+      {"name": "Forward IE on circle R|L", "size": 38162},
+      {"name": "Forward x-overs CCW|CW", "size": 67814},
+      {"name": "Backwards 1 foot glide R|L", "size": 7413},
+      {"name": "Hocket Stop both directions", "size": 32561}
+      ]
+    },
+    {
+     "name": "Adult 5",
+     "children": [
+      {"name": "Backward OE on circle R|L", "size": 32938},
+      {"name": "Backward IE on circle R|L", "size": 38162},
+      {"name": "Backward x-overs CCW|CW", "size": 67814},
+      {"name": "Forward outside 3-turn R|L", "size": 7413},
+      {"name": "Beginning two-foot spin", "size": 32561}
+      ]
+    },
+    {        
+     "name": "Adult 6",
+     "children": [
+      {"name": "Forward stroking with x-over end patterns", "size": 629380},
+      {"name": "Backward stroking with x-over end patterns", "size": 681620},
+      {"name": "Forward inside 3-turn R|L", "size": 67814},
+      {"name": "T-Stop", "size": 7413},
+      {"name": "Lunge", "size": 6561},
+      {"name": "Two-foot spin into one-foot spin", "size": 91301}
+      ]
+    }
+]
+}
+ ]
+}

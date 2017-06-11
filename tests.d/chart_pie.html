@@ -1,0 +1,36 @@
+<script>
+// Initialize empty array
+var data = [];
+
+// Get JSON data and wait for the response
+d3.json("../data/data.json", function(error, json) {
+  $.each(json, function(d,i){
+    data.push({
+      label: i.label,
+      value: i.value
+    })
+  })
+
+  var pie = new d3pie("pieChart", {
+    "header": {
+      "title": {
+        "text": "Traffic Sources",
+        "fontSize": 22,
+        "font": "verdana"
+      },
+    },
+    "size": {
+      "canvasHeight": 400,
+      "canvasWidth": 590
+    },
+    "data": {
+      "content": data
+    },
+    "labels": {
+      "outer": {
+        "pieDistance": 32
+      }
+    }
+  });
+});
+</script>

@@ -1,0 +1,108 @@
+id,value
+Skating,
+Skating.Basic,
+Skating.Basic.1,
+Skating.Basic.1.Sit on ice and stand,23534
+Skating.Basic.1.March on ice,25731
+Skating.Basic.1.Forward two foot glide,27840
+Skating.Basic.1.Dip,25914
+Skating.Basic.1.Foward Swizzle 6 to 8 in a row,23416
+Skating.Basic.1.Backwards wiggles 6 to 8 in a row,23416
+Skating.Basic.1.Snowplow stop, 25613
+Skating.Basic.1.Rocking horse 2 to 3, 10000
+Skating.Basic.2,
+Skating.Basic.2.Forward one foot glides,27074
+Skating.Basic.2.Backwards 2 foot glide,21074
+Skating.Basic.2.Backwards swizzles,10000
+Skating.Basic.2.Two-foot turns forward to backwards in place,22000
+Skating.Basic.2.Moving snowplow stop,15000
+Skating.Basic.2.Foward alternating half swizzle pumps in a straight line,19000
+Skating.Basic.3,
+Skating.Basic.3.Forward stroking,15000
+Skating.Basic.3.Forward half swizzle on circle 6 to 8 times,23000 
+Skating.Basic.3.Two foot turn moving forward to back, 29000
+Skating.Basic.3.Backwards one foot glides,15000
+Skating.Basic.3.Forward slalom,10000
+Skating.Basic.3.Two foot spin with 2 revolutions,18000
+Skating.Basic.4,
+Skating.Basic.4.Forward outside edge on a circle,60000
+Skating.Basic.4.Forward inside edge on a circle,60000
+Skating.Basic.4.Forward cross over clock and counter clockwise,99999
+Skating.Basic.4.Foward outside three turn from standing,10000
+Skating.Basic.4.Backwards half swizzle pumps on a circle clock and counter clockwise,10000
+Skating.Basic.4.Backwards stroking,50000
+Skating.Basic.4.Backwards snowplow stop,10000
+Skating.Basic.5,
+Skating.Basic.5.Backwards outside edge on a circle,41000
+Skating.Basic.5.backwards inside edge on circle,10044
+Skating.Basic.5.backwards cross over clock and counter clockwise,14054
+Skating.Basic.5.One foot spin at least 3 revolutions,15062
+Skating.Basic.5.Hockey stop,10000
+Skating.Basic.5.Side toe hop,10530
+Skating.Basic.6,
+Skating.Basic.6.Foward inside three turn from standing,63473
+Skating.Basic.6.Moving backward to foward two-foot turn on circle clock and counter clockwise,15473
+Skating.Basic.6.T Stop on R or L,12145
+Skating.Basic.6.Bunny hop,12466
+Skating.Basic.6.Forward spiral on a straight line on R or L,21456
+Skating.Basic.6.Forward lunge on R or L,123478
+Skating.Basic.7,
+Skating.Basic.7.Forward inside open Mohawk from a standstill position on R to L and L to R,46134
+Skating.Basic.7.Backward outside edge to forward outside edge transition on a circle on R and L,25674
+Skating.Basic.7.Ballet jump on R and L,35167
+Skating.Basic.7.Backward crossovers to a backward outside edge glides (landing position), clockwise and counterclockwise,12345
+Skating.Basic.7.Forward inside pivots on R or L,12561
+Skating.Basic.8,
+Skating.Basic.8.Moving forward outside three-turn on a circle on R and L,41235
+Skating.Basic.8.Moving forward inside three-turn on a circle on R and L,15323
+Skating.Basic.8.Combination move of Forward crossovers into forward inside Mohawk the cross behind and step into backward crossover and step to forward inside edge,99999
+Skating.Free Skate,
+Skating.Free Skate.1,
+Skating.Free Skate.1.Advanced forward stroking,10000
+Skating.Free Skate.1.4 to 6 Basic forward outside and forward inside 4 consecutive edges,12345
+Skating.Free Skate.1.Advanced back outside three turns clockwise and counterclockwise on R and L,12474
+Skating.Free Skate.1.Scratch spin from back crossovers at least three revolutions minimum,15633
+Skating.Free Skate.1.Waltz jump from 2 or 3 back crossovers,15802
+Skating.Free Skate.1.Half flip,98723
+Skating.Free Skate.2,
+Skating.Free Skate.2.4 to 6 Basic backwards outside and inside consecutive edges,76433
+Skating.Free Skate.2.Forward outside and forward inside spirals both clock and counter clockwise on R and L,85412
+Skating.Free Skate.2.Continuous forward progressive chasse sequence clockwise and counterclockwise,25784
+Skating.Free Skate.2.Waltz threes on R and L,14903
+Skating.Free Skate.2.Beginning back spin at least two turns,15803
+Skating.Free Skate.2.Waltz jump then side toe hop and waltz jump sequence,16380
+Skating.Free Skate.2.Toe loop,55103
+Skating.Free Skate.3,
+Skating.Free Skate.3.Forward and backward crossovers in figure 8 pattern,85325
+Skating.Free Skate.3.Waltz 8,16796
+Skating.Free Skate.3.4 to 6 Advanced forward consecutive swing rolls,13639
+Skating.Free Skate.3.Backward inside three turn on R and L,96524
+Skating.Free Skate.3.Backspin with free foot in crossed leg position with three revolutions minimum,58982
+Skating.Free Skate.3.Salchow,82590
+Skating.Free Skate.3.Half Lutz jump,38924
+Skating.Free Skate.3.Waltz jump toe loop combo or Salchow toe loop combination sequence on a circle both clockwise and counterclockwise,17854
+Skating.Free Skate.4,
+Skating.Free Skate.4.Spiral sequence FI spiral to FI Mohawk to BO Spiral both clock and counterclockwise,85056
+Skating.Free Skate.4.Forward power three turns on R and L,97385
+Skating.Free Skate.4.Continuous backward progressive chasse sequence on a circle both clock and counterclockwise,68342
+Skating.Free Skate.4.Sit spin at least three revolutions,62358
+Skating.Free Skate.4.Loop jump,23574
+Skating.Free Skate.4.Waltz jump and loop jump combination,28314
+Skating.Free Skate.5,
+Skating.Free Skate.5.Backward outside three turn to Mohawk into three backward crossovers and repeat three times clock and counterclockwise,75423
+Skating.Free Skate.5.Spiral sequence Forward outside spiral forward outside three turn into one backward crossover then back inside spiral,74353
+Skating.Free Skate.5.clockwise and counterclockwise,21352
+Skating.Free Skate.5.Forward outside slide chasse swing roll sequence at least 3 to 6 times with alternating feet,52312
+Skating.Free Skate.5.Camel spin with at least three revolutions minimum,12497
+Skating.Free Skate.5.Forward upright spin to back scratch spin with three revolutions per foot,23574
+Skating.Free Skate.5.Loop combination,34523
+Skating.Free Skate.5.Flip jump,34279
+Skating.Free Skate.5.Waltz jump to falling leaf to toe loop jump sequence,35484
+Skating.Free Skate.6,
+Skating.Free Skate.6.Alternating back crossovers to back outside edges,34574
+Skating.Free Skate.6.Five step Mohawk sequence both clock and counterclockwise,43567
+Skating.Free Skate.6.Camel sit spin combination with four revolutions total,75422
+Skating.Free Skate.6.Split jump or stag jump,34257
+Skating.Free Skate.6.Waltz jump to half loop to Salchow,34563
+Skating.Free Skate.6.Lutz jump,23456
+Skating.Free Skate.6.Axel walk through and preparation to jump Axel does not need to be landed to pass this test,86532

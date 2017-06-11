@@ -5,7 +5,7 @@ require 'data_static.php';
 require 'include.d/functions.php';
 
 $ice = add_ICETIME();
-$coach = add_COACHTIME();
+$coach = add_COACHTIME2();
 
 echo '<table class="table table" style="width:auto;" align="center"> <thead>';
 echo '<tr><th colspan="2" class="text-center"> Financial Overview </th></tr>';

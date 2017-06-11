@@ -22,6 +22,11 @@ echo '<tr class="small"><td class="text-right">$' . number_format($coach[0], 2, 
 
 $cost = $ice[0] + $coach[0] + $total_equipment + $total_maintenance + $total_class_fees + $total_perf_fees + $total_membership + $total_comp_fees;
 
-echo "</tbody></table>"; 
+echo '</tbody></table> 
+
+              <h4>Total</h4>
+              <div class="text-muted">';
+
+echo '$' . $cost . '</div></div>'; 
 
 ?>

@@ -43,15 +43,9 @@ echo '
 
 	require 'include.d/menu_side.php';
 	require 'include.d/table_ice-coach.php';	
-
-	echo '</div>
-            </div>
-            <div class="col-6 col-sm-3 placeholder">';
-
-require 'include.d/chart_ratio-coach.php';	
-
-        echo'
-          </div>
+	require 'include.d/chart_ratio-coach.php';	
+        
+	echo'
             <div class="col-6 col-sm-3 placeholder">
               <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
               <h4>Label</h4>

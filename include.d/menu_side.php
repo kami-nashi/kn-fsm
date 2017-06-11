@@ -10,7 +10,7 @@ echo '
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/kn-fsm/index.php">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/kn-fsm/index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Calendar<a>
@@ -27,7 +27,7 @@ echo '
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.php">Overview</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Reports</a>
@@ -68,7 +68,7 @@ echo '
               <a class="nav-link" href="https://github.com/kami-nashi/kn-fsm/">Git Repo for KN-FSM</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://docs.google.com/spreadsheets/d/10NnDnV2HpXcRsGWtajCnOiUfoitcLQloFosvLXYcEMU">Original Google Doc</a>
+              <a class="nav-link active" href="https://docs.google.com/spreadsheets/d/10NnDnV2HpXcRsGWtajCnOiUfoitcLQloFosvLXYcEMU">Original Google Doc<span class="sr-only"></span></a>
             </li>
           </ul>
 

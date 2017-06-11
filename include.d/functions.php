@@ -48,17 +48,10 @@ function add_COACHTIME() {
 		$coach_minutely = $row['coach_rate'] / 60;
 	}
 	
-#	$rounded_minutes = ceiling($coach_minutely, 0.05);  
-
 	$coach_hours = $coach_minutes / 60;
 	$coach_total = $coach_minutes * $coach_minutely; 
 
 	return array($coach_total, $coach_hours);
-
-	# diag stuff
-	#echo "<p>" . number_format($coach_hours, 2, '.', '') . " in Coached Hours </p>";
-	#echo "<p>$" . number_format($coach_total, 2, '.', '') . " in Coach Costs </p>";
-
 }
 
 function add_TOTALS(){
@@ -96,17 +89,10 @@ function add_COACHTIME2() {
 		$coach_cost += $coach_time * coach_conversion;
 	}
 	
-#	$rounded_minutes = ceiling($coach_minutely, 0.05);  
-
 	$coach_hours = $coach_minutes / 60;
 	$coach_total = $coach_minutes * $coach_minutely; 
 
 	return array($coach_cost, $coach_hours);
-
-	# diag stuff
-	#echo "<p>" . number_format($coach_cost, 2, '.', '') . " in Coached Hours </p>";
-	#echo "<p>$" . number_format($coach_total, 2, '.', '') . " in Coach Costs </p>";
-
 }
 
 ?>

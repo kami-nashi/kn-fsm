@@ -86,13 +86,13 @@ function add_COACHTIME2() {
     		$coach_time = $row['coach_time'];
 		$coach_rate = $row['coach_rate'];
 		$coach_conversion = $coach_rate / 30;
-		$coach_cost += $coach_time * coach_conversion;
+		$coach_cost += $coach_time * $coach_conversion;
 	}
 	
 	$coach_hours = $coach_minutes / 60;
-	$coach_total = $coach_minutes * $coach_minutely; 
+	$coach_total = $coach_minutes * $coach_converstion; 
 
-	return array($coach_cost, $coach_hours);
+	return array($coach_cost, $coach_hours, $coach_minutes);
 }
 
 ?>

@@ -90,9 +90,9 @@ function add_COACHTIME2() {
 	}
 	
 	$coach_hours = $coach_minutes / 60;
-	$coach_total = $coach_minutes * $coach_converstion; 
+	$coach_total = $coach_minutes * $coach_conversion; 
 
-	return array($coach_cost, $coach_hours, $coach_minutes);
+	return array($coach_cost, $coach_hours, $coach_minutes, $coach_rate, $coach_time, $coach_conversion);
 }
 
 ?>

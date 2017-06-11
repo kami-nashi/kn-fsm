@@ -1,8 +1,5 @@
 <?php
 
-require 'include.d/functions.php';
-
-$ice = add_ICETIME();
 $coach = add_COACHTIME2();
 
 echo '<table class="table table" style="width:auto;" align="center"> <thead>';

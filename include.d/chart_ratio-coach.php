@@ -1,7 +1,6 @@
 <?php
 
-$ice = add_ICETIME();
-$coach = add_COACHTIME();
+$coach = add_COACHTIME2();
 $no_coach = $ice[1] - $coach[1];
 
 echo '<div class="col-6 col-sm-3 placeholder"><table class="table table" style="width:auto;" align="center"> <thead>';

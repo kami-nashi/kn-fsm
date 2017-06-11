@@ -13,10 +13,10 @@ echo '
             <a class="nav-link" href="/kn-fsm/index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Calendar<a>
+            <a class="nav-link" href="#">Calendar(Disabled)<a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="#">Login(Disabled)</a>
           </li>
         </ul>
       </div>
@@ -30,7 +30,7 @@ echo '
               <a class="nav-link" href="index.php">Overview</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Reports</a>
+              <a class="nav-link" href="#">Reports(Disabled)</a>
             </li>
           </ul>
 
@@ -39,28 +39,28 @@ echo '
               <a class="nav-link" href="ice_time.php">Ice Time</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Maintenance</a>
+              <a class="nav-link" href="maintenance.php">Maintenance</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Equipment</a>
+              <a class="nav-link" href="#">Equipment(Disabled)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Notes</a>
+              <a class="nav-link" href="#">Notes(Disabled)</a>
             </li>
           </ul>
 
           <ul class="nav nav-pills flex-column">
              <li class="nav-item">
-              <a class="nav-link" href="#">Skills Overview</a>
+              <a class="nav-link" href="#">Skills Overview(Disabled)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Routines</a>
+              <a class="nav-link" href="#">Routines(Disabled)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Competitions</a>
+              <a class="nav-link" href="#">Competitions(Disabled)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Workshops</a>
+              <a class="nav-link" href="#">Workshops(Disabled)</a>
             </li>
           </ul>
           <ul class="nav nav-pills flex-column">

@@ -90,4 +90,109 @@ function add_TOTALS(){
 
 }
 
+function add_EVENTS_C(){
+	$c_cost = 0;
+	require 'db_connect.php';
+	$get_sql = 'SELECT * FROM events_c';
+	$result = mysql_query($get_sql, $link);
+		if (!$result) {
+    		echo "DB Error, could not query the database\n";
+    		echo 'MySQL Error: ' . mysql_error();
+    		exit;
+	 }
+
+	while ($row = mysql_fetch_assoc($result)) {
+		$c_cost += $row['e_cost'];
+
+	 }
+
+	return array($c_cost);
+}
+
+function add_EVENTS_P(){
+	require 'db_connect.php';
+	$get_sql = 'SELECT * FROM events_p';
+	$result = mysql_query($get_sql, $link);
+		if (!$result) {
+    		echo "DB Error, could not query the database\n";
+    		echo 'MySQL Error: ' . mysql_error();
+    		exit;
+	 }
+
+	while ($row = mysql_fetch_assoc($result)) {
+		$p_cost += $row['e_cost'];
+
+	 }
+
+	return array($p_cost);
+}
+
+function add_EQUIP(){
+	require 'db_connect.php';
+	$get_sql = 'SELECT * FROM equip_manifest';
+	$result = mysql_query($get_sql, $link);
+		if (!$result) {
+    		echo "DB Error, could not query the database\n";
+    		echo 'MySQL Error: ' . mysql_error();
+    		exit;
+	 }
+
+	while ($row = mysql_fetch_assoc($result)) {
+		$e_cost += $row['cost_actual'];
+
+	 }
+
+	return array($e_cost);
+}
+
+function add_CLUB(){
+	require 'db_connect.php';
+	$get_sql = 'SELECT * FROM club_membership';
+	$result = mysql_query($get_sql, $link);
+		if (!$result) {
+    		echo "DB Error, could not query the database\n";
+    		echo 'MySQL Error: ' . mysql_error();
+    		exit;
+	 }
+
+	while ($row = mysql_fetch_assoc($result)) {
+		$club_cost += $row['club_cost'];
+
+	 }
+
+	return array($club_cost);
+}
+
+function add_SKATESCHOOL(){
+	require 'db_connect.php';
+	$get_sql = 'SELECT * FROM class_skate_school';
+	$result = mysql_query($get_sql, $link);
+		if (!$result) {
+    		echo "DB Error, could not query the database\n";
+    		echo 'MySQL Error: ' . mysql_error();
+    		exit;
+	 }
+
+	while ($row = mysql_fetch_assoc($result)) {
+		$class_cost += $row['class_cost'];
+
+	 }
+
+	return array($class_cost);
+}
+
+function add_costs_total(){
+
+	$time_coach = add_COACHTIME2();
+	$cost_maint = maintenance();
+	$events_c = add_EVENTS_C();
+	$events_p = add_EVENTS_P();
+	$cost_equip = add_EQUIP();
+	$cost_club = add_CLUB();
+	$cost_class = add_SKATESCHOOL();
+
+	return array($cost_equip[0], $cost_maint[1], $cost_class[0], $events_p[0], $cost_club[0], $events_c[0]);
+
+}
+
 ?>

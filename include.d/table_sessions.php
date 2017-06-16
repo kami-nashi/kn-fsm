@@ -8,7 +8,7 @@ echo '<table class="table table-striped"> <thead>
 </thead>
 <tbody>';
 
-$sql = 'select * from ice_time, coaches, locations, ice_type where ice_time.coach_id = ice_time.coach_id and coaches.id = ice_time.coach_id and locations.id = ice_time.rink_id and ice_type.id = ice_time.skate_type ORDER BY date DESC';
+$sql = 'select * from ice_time, coaches, locations, ice_type where ice_time.coach_id = ice_time.coach_id and coaches.id = ice_time.coach_id and locations.id = ice_time.rink_id and ice_type.id = ice_time.skate_type and ice_time.date > (NOW() - INTERVAL 14 DAY) ORDER BY date DESC';
 $result = mysql_query($sql, $link);
 if (!$result) {
     echo "DB Error, could not query the database\n";

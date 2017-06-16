@@ -23,6 +23,9 @@ echo '
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
   </head>
 
   <body>';
@@ -32,11 +35,31 @@ echo '
         require 'include.d/chart_ratio-coach.php';
 	require 'include.d/list_maintenance-hours.php';
 echo '
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
+		<canvas id="pie-chart" width="200" height="125"></canvas>
+		<script>
+	new Chart(document.getElementById("pie-chart"), {
+    type: "pie",
+    data: {
+      labels: ["Equipment", "Maintenance", "Class Fees", "Performance", "Membership Fees", "Competition Fees", "Ice Time", "Coaching Cost"],
+      datasets: [{
+        label: "Totals",
+backgroundColor: ["#3e95cd","#8e5ea2","#3cba9f","#e8c3b9","#c45850","#4cc5b7","#d816e0","#3d86e8"],';
+print '       data: ['.$totals[0].','.$totals[1].','.$totals[2].','.$totals[3].','.$totals[4].','.$totals[5].','.$ice[0].','.$coach[0].']';
+print '        
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Totals"
+      },
+     legend: {
+	display: false,
+	}
+    }
+});
+</script>
+            <div class="col-6 col-sm-3 placeholder">            </div>
           </section>
     <div class="input-append date form_datetime">
         <input size="16" type="text" value="" readonly>
@@ -63,13 +86,6 @@ echo '
         </main>
       </div>
     </div>
-<script>
-jQuery(document).ready(function () {
-
-    jQuery('.datepicker').datetimepicker({ format: 'DD/MM/YYYY' });
-    jQuery('.datetimepicker').datetimepicker();
-
-});
 </script>
   </body>
 </html>

@@ -1,7 +1,5 @@
 <?php
 
-require_once '../include.d/db_connect.php';
-
 $sql_coach = 'select * from coaches';
 $sql_rink = 'select * from locations';
 $sql_itype = 'select * from ice_type';
@@ -15,13 +13,10 @@ if (!$result) {
     exit;
 }
 
-echo "<html>";
-echo "<body>";
-
-echo "<form action='data_submit.php' method='POST'>";
-echo "<p>Date: <input type='text' name='date' id='date'/> ";
-echo "Ice Time: <input type='text' name='ice_time' id='ice_time'/> ";
-echo "Ice Cost: <input type='text' name='ice_cost' id='ice_cost'/> ";
+echo "<form action='include.d/data_submit.php' method='POST'>";
+echo "<p>Date: <input size='8' type='text' name='date' id='date'/> ";
+echo "Ice Time: <input size='4' type='text' name='ice_time' id='ice_time'/> ";
+echo "Ice Cost: <input size='6' type='text' name='ice_cost' id='ice_cost'/> ";
 echo '<select name="skate_type">';
 while ($row = mysql_fetch_assoc($ice_type)) {
     unset($id, $type);
@@ -30,7 +25,7 @@ while ($row = mysql_fetch_assoc($ice_type)) {
     echo "<option value=".$id.">".$type."</option>";
 }
 echo "</select> ";
-echo "Coach Time: <input type='text' name='coach_time' id='coach_time'/> ";
+echo "Coach Time: <input size='4' type='text' name='coach_time' id='coach_time'/> ";
 echo '<select name="coach_name">';
 while ($row = mysql_fetch_assoc($result)) {
     unset($id, $name);
@@ -46,11 +41,7 @@ while ($row = mysql_fetch_assoc($other_result)) {
     $location_id = $row['location_id'];
     echo "<option value=".$id.">".$location_id."</option>";
 }
-echo "</select></p>";
-echo '<center><input type="submit" value="ADD">
-<input type="reset" value="ADD MORE RESOURCE"></center></form>';
-
-echo "</body>";
-echo "</html>";
+echo "</select>";
+echo '<input type="submit" value="Add Time"></p></form>';
 
 ?>

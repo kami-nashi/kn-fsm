@@ -1,15 +1,7 @@
 <?php
 
-require 'data_static.php';
 
 $coach = add_COACHTIME2();
-#$m_cost = maintenance();
-#$events_c = add_EVENTS_C();
-#$events_p = add_EVENTS_P();
-#$equip_add = add_EQUIP();
-#$club_cost = add_CLUB();
-#$class_cost = add_SKATESCHOOL();
-
 $totals = add_costs_total();
 
 echo '<table class="table table" style="width:auto;" align="center"> <thead>';

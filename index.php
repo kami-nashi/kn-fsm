@@ -1,6 +1,5 @@
 <?php
-
-require 'include.d/data_static.php';
+require 'include.d/db_connect.php';
 require 'include.d/functions.php';
 
 $ice = add_ICETIME();
@@ -23,26 +22,27 @@ echo '
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </head>
 
   <body>';
 
   	require 'include.d/menu_side.php';
         require 'include.d/table_overview.php';
-        require 'include.d/chart_ratio-coach.php';
+        require 'include.d/chart_overview.php';
+echo ' <div>';
+        require 'include.d/chart_coach-ratio.php'; 
+	require 'include.d/chart_ratio-coach.php';
+echo ' </div>';
+echo ' <div>';
+	require 'include.d/chart_maintenance.php';
 	require 'include.d/list_maintenance-hours.php';
-echo '
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </section>
+echo ' </div>';
+echo ' </section><h2>Session Metrics</h2>';
+	require 'include.d/data_form.php';
+echo ' <div class="table-responsive">';
 
-          <h2>Session Metrics</h2>
-          <div class="table-responsive">';
-
-require 'include.d/table_sessions.php';
+	require 'include.d/table_sessions.php';
 
 echo '
               </tbody>

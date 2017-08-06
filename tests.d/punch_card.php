@@ -41,10 +41,11 @@ require '../include.d/db_connect.php';
 
 $skate = skate_total();
 $punch = punch_card();
-
+$skate_h = $skate[0] / 30;
 $diff = $punch[0] - $skate[0];
 $conv = $diff / 30;
+$card = $punch[0] / 30;
 
 echo '<p>' . $conv . ' punches remaining';
-
+echo '<p>' . $card . ' total on card';
 ?>

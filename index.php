@@ -21,7 +21,7 @@ echo ' </section><h2>Session Metrics</h2>';
 	require 'include.d/data_form.php';
 echo ' <div class="table-responsive">';
 
-	require 'include.d/table_sessions.php';
+	require 'include.d/table_sessions-brief.php';
 
 echo '
               </tbody>

@@ -195,4 +195,44 @@ function add_costs_total(){
 
 }
 
+################################################################################################################
+##						Calculate Punch Cards					      ##
+################################################################################################################
+
+function skate_total() {
+	require 'db_connect.php';
+
+        $sql = 'SELECT * FROM ice_time WHERE skate_type = 8';
+        $result = mysql_query($sql, $link);
+                if (!$result) {
+                echo "DB Error, could not query the database\n";
+                echo 'MySQL Error: ' . mysql_error();
+                exit;
+        }
+        while ($row = mysql_fetch_assoc($result)) {
+        $skate_total += $row['ice_time'];
+        $punch_down = $row['ice_time'] / 30;
+        $punches_total += $punch_down;
+       }
+       return array($skate_total, $punches_total);
+}
+
+function punch_card(){
+	require 'db_connect.php';
+
+        $sql = 'SELECT * FROM ice_punch';
+        $result = mysql_query($sql, $link);
+                if (!$result) {
+                echo "DB Error, could not query the database\n";
+                echo 'MySQL Error: ' . mysql_error();
+                exit;
+         }
+
+        while ($row = mysql_fetch_assoc($result)) {
+        $punch_total += $row['punch_time'];
+        }
+        return array($punch_total);
+
+}
+
 ?>

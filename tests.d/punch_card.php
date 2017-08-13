@@ -27,7 +27,7 @@ require '../include.d/db_connect.php';
 function punch_card(){
 require '../include.d/db_connect.php';
 
-        $sql = 'SELECT * FROM ice_punch WHERE punch_location = 1';
+        $sql = 'SELECT * FROM ice_punch';
 	$result = mysql_query($sql, $link);
                 if (!$result) {
                 echo "DB Error, could not query the database\n";

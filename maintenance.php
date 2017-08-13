@@ -2,7 +2,7 @@
 require_once 'include.d/db_connect.php';
 require 'include.d/functions.php';
 
-$m_sql = 'select * from maintenance';
+$m_sql = 'select * from maintenance, locations where maintenance.m_location = locations.id order by m_date desc';
 
 $result = mysql_query($m_sql, $link);
 if (!$result) {

@@ -74,9 +74,12 @@ echo '
 
         </nav>
 
-        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-          <h1>Dashboard</h1>
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">';
 
-          <section class="row text-center placeholders">
+echo '<h1>Dashboard <class="text-muted">(';
+$ice = add_ICETIME();
+echo $ice[1] . ' Hours)</h1>';
+
+echo         '<section class="row text-center placeholders">
             <div class="col-6 col-sm-3 placeholder">';
 ?>

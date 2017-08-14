@@ -12,9 +12,5 @@ echo '<tr class="small"><td class="text-right">' . number_format($no_coach, 2, '
 
 $cost = $ice[1] + $coach[1];
 
-echo '</tbody></table>'; 
-echo '
-              <h4>Total</h4>
-              <div class="text-muted">';
-echo $ice[1] . ' Hours </div></div>';
+echo '</tbody></table></div>'; 
 ?>

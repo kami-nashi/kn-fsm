@@ -3,7 +3,7 @@
 function journal_videos() {
 
         require '../include.d/db_connect.php';
-        $get_sql = 'SELECT ice_time.*, j_videos.* FROM ice_time, j_videos WHERE ice_time.date = j_videos.date';
+        $get_sql = 'SELECT ice_time.*, j_videos.* FROM ice_time, j_videos WHERE ice_time.has_video = 1 AND ice_time.date = j_videos.date';
         $coach_result = mysql_query($get_sql, $link);
                 if (!$coach_result) {
                 echo "DB Error, could not query the database\n";

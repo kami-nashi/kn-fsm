@@ -45,7 +45,7 @@ echo '
               <a class="nav-link" href="#">Equipment(Disabled)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Notes(Disabled)</a>
+              <a class="nav-link" href="journal.php">Journal</a>
             </li>
           </ul>
 

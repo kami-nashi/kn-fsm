@@ -235,4 +235,31 @@ function punch_card(){
 
 }
 
+
+################################################################################################################
+##                                              Journal/Video Handling                                        ##
+################################################################################################################
+
+function journal_videos() {
+
+        require 'db_connect.php';
+        $get_sql = 'SELECT ice_time.*, j_videos.* FROM ice_time, j_videos WHERE ice_time.has_video = 1 AND ice_time.date = j_videos.date order by ice_time.date desc';
+        $video_result = mysql_query($get_sql, $link);
+                if (!$video_result) {
+                echo "DB Error, could not query the database\n";
+                echo 'MySQL Error: ' . mysql_error();
+                exit;
+         }
+
+        echo "<table class='table table-striped'> <thead>";
+        echo "<tr><td> Date </td><td> Description </td><td> Video URL </td><td> Sharing Platform </tr></td>";
+	echo "</thead><tbody>";
+        while ($row = mysql_fetch_assoc($video_result)) {
+
+        echo "<tr><td>" . $row['date'] . "</td><td>" . $row['name']  . "</td><td><a target='_blank' href='" . $row['url'] . "'>" . $row['url'] . "</a></td><td>" . $row['sharing_platform']  . "</tr></td>";
+        }
+        echo "</tbody></table>";
+}
+
+
 ?>

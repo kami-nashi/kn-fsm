@@ -20,9 +20,10 @@ while ($row = mysql_fetch_assoc($result)) {
     $total_ice += $row['ice_time'];
     $ice_cost += $row['ice_cost'];
     $jv = '--';
+    $jv_url = urlencode($row['date']) . "\n";
 
     if ($row['has_video'] == 1)
-	$jv = '<a href="#" target="_blank"><img src="images/booklet.png" style="width:32px;height:32px;"></a>';
+	$jv = '<a href="journal.php?date=' . $jv_url . '" ><img src="images/booklet.png" style="width:32px;height:32px;"></a>';
 
     echo "<tr><td>" . $row['date'] . "</td><td>" . $row['ice_time'] . "</td><td>" . $row['ice_cost'] . "</td><td>" .$row['type'] . "</td><td>" . $row['coach_time'] . "</td><td>" . $row['coach_fname'] . " " . $row['coach_lname'] . "</td><td>" . $row['coach_rate'] . "</td><td>" . $jv . "</td><td>" . $row['location_id'] . "</td><td>" . $row['location_city'] ."</td><td>" .  $row['location_state'] . "</td></tr>";
     

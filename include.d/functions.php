@@ -243,7 +243,14 @@ function punch_card(){
 function journal_videos() {
 
         require 'db_connect.php';
-        $get_sql = 'SELECT ice_time.*, j_videos.* FROM ice_time, j_videos WHERE ice_time.has_video = 1 AND ice_time.date = j_videos.date order by ice_time.date desc';
+        $jv_date = $_GET['date'];
+
+	if (empty($jv_date)){
+		$get_sql = 'SELECT ice_time.*, j_videos.* FROM ice_time, j_videos WHERE ice_time.has_video = 1 AND ice_time.date = j_videos.date order by ice_time.date desc';
+	} else {
+	        $get_sql = "SELECT * FROM j_videos WHERE date = '" . $jv_date . "'";
+
+	}
         $video_result = mysql_query($get_sql, $link);
                 if (!$video_result) {
                 echo "DB Error, could not query the database\n";

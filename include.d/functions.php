@@ -1,5 +1,76 @@
 <?php
 
+function db_stuff(){
+	require 'db_connect.php';
+	$sql = $sql_query;
+	$result = mysql_query($sql, $link);
+		if (!$result) {
+				echo "DB Error, could not query the database\n";
+				echo 'MySQL Error: ' . mysql_error();
+				exit;
+			}
+}
+
+################################################################################
+#
+# total monthly time spent on ice
+#
+################################################################################
+
+function diff_icetime_current(){
+
+	require 'db_connect.php';
+	$sql = 'SELECT ice_time FROM ice_time WHERE MONTH(CURDATE()) = MONTH(date) AND YEAR(CURDATE()) = YEAR(date)';
+	$result = mysql_query($sql, $link);
+
+		if (!$result) {
+    		echo "DB Error, could not query the database\n";
+    		echo 'MySQL Error: ' . mysql_error();
+    		exit;
+			}
+				$month_current = 0;
+
+				while ($row = mysql_fetch_assoc($result)) {
+			    		$month_current += $row['ice_time'];
+				 }
+
+				# basic math
+				$ice_hours = $month_current / 60;
+				return array($ice_hours);
+
+}
+
+function diff_icetime_last(){
+
+	require 'db_connect.php';
+	$sql = 'SELECT ice_time FROM ice_time WHERE MONTH(CURDATE()) - 1= MONTH(date) AND YEAR(CURDATE()) = YEAR(date)';
+	$result = mysql_query($sql, $link);
+
+		if (!$result) {
+    		echo "DB Error, could not query the database\n";
+    		echo 'MySQL Error: ' . mysql_error();
+    		exit;
+			}
+				$month_current = 0;
+
+				while ($row = mysql_fetch_assoc($result)) {
+			    		$month_current += $row['ice_time'];
+				 }
+
+				# basic math
+				$ice_hours = $month_current / 60;
+				return array($ice_hours);
+
+}
+
+function diff_icetime(){
+	$current = diff_icetime_current();
+	$previous = diff_icetime_last();
+
+	return array($current[0], $previous[0]);
+
+}
+
 function add_ICETIME() {
 	require 'db_connect.php';
 	$sql = 'select * from ice_time';
@@ -15,7 +86,7 @@ function add_ICETIME() {
 
 	while ($row = mysql_fetch_assoc($result)) {
     		$ice += $row['ice_time'];
-    		$ice_cost += $row['ice_cost']; 
+    		$ice_cost += $row['ice_cost'];
 	 }
 
 	# basic math
@@ -49,9 +120,9 @@ function add_COACHTIME2() {
 		$coach_conversion = $coach_rate / 30;
 		$coach_cost += $coach_time * $coach_conversion;
 	}
-	
+
 	$coach_hours = $coach_minutes / 60;
-	$coach_total = $coach_minutes * $coach_conversion; 
+	$coach_total = $coach_minutes * $coach_conversion;
 
 	return array($coach_cost, $coach_hours, $coach_minutes, $coach_rate, $coach_time, $coach_conversion);
 }
@@ -69,7 +140,7 @@ function maintenance(){
 	$m_hours = 0;
 	while ($row = mysql_fetch_assoc($result)) {
     		$m_hours += $row['m_hours_on'];
-    		$m_cost += $row['m_cost']; 
+    		$m_cost += $row['m_cost'];
 	 }
 
 	$ice_time_total = add_ICETIME();

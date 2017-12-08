@@ -12,7 +12,7 @@ require 'include.d/html_header.php';
 	require 'include.d/table_punches.php';
 	require 'include.d/chart_ratio-coach.php';
   require 'include.d/chart_coach-ratio.php';
-
+require 'include.d/chart_area-12months.php';
 require_once 'include.d/table_sessions.php';
 
 echo '

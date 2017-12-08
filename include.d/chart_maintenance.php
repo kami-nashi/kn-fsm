@@ -3,7 +3,7 @@ $m_data = maintenance();
 
 echo '
 
-<div><canvas id="doughnut-chart2" width="200" height="200"></canvas></div>
+<div ><canvas id="doughnut-chart2" width="200" height="200"></canvas></div>
 <script>
 new Chart(document.getElementById("doughnut-chart2"), {
     type: "doughnut",

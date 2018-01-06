@@ -18,7 +18,15 @@ echo '
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+';
+
+
+echo '
   </head>
 
   <body>';
+
+require 'style_modal.php';
+
+
 ?>

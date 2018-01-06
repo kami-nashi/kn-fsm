@@ -1,5 +1,9 @@
 <?php
 
+require 'include.d/db_connect.php';
+$ice = add_ICETIME();
+
+
 $sql_coach = 'select * from coaches';
 $sql_rink = 'select * from locations';
 $sql_itype = 'select * from ice_type';

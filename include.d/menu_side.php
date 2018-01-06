@@ -18,6 +18,13 @@ echo '
           <li class="nav-item">
             <a class="nav-link" href="#">Login(Disabled)</a>
           </li>
+          <li class="nav-item">
+		<button class= "btntxt" id="myBtn">Update Time</button>';
+require 'html_modal.php';
+
+echo '
+          </li>
+
         </ul>
       </div>
     </nav>

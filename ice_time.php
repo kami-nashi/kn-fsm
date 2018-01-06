@@ -5,7 +5,6 @@ require 'include.d/functions.php';
 $ice = add_ICETIME();
 
 require 'include.d/html_header.php';
-
 	require 'include.d/menu_side.php';
 	require 'include.d/table_ice-coach.php';
 	require 'include.d/table_hours.php';

@@ -138,8 +138,9 @@ function maintenance(){
 	 }
 
 	$m_hours = 0;
+	$m_cost = 0;
 	while ($row = mysql_fetch_assoc($result)) {
-		$m_cost = 0;
+
     		$m_hours += $row['m_hours_on'];
     		$m_cost += $row['m_cost'];
 	 }

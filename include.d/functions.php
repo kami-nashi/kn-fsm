@@ -139,6 +139,7 @@ function maintenance(){
 
 	$m_hours = 0;
 	while ($row = mysql_fetch_assoc($result)) {
+		$m_cost = 0;
     		$m_hours += $row['m_hours_on'];
     		$m_cost += $row['m_cost'];
 	 }
@@ -190,13 +191,15 @@ function add_EVENTS_P(){
     		exit;
 	 }
 
-	while ($row = mysql_fetch_assoc($result)) {
+	while ($row = mysql_fetch_assoc($result))
+		$p_cost = 0;
 		$p_cost += $row['e_cost'];
 
-	 }
+
 
 	return array($p_cost);
-}
+
+ }
 
 function add_EQUIP(){
 	require 'db_connect.php';
@@ -209,6 +212,7 @@ function add_EQUIP(){
 	 }
 
 	while ($row = mysql_fetch_assoc($result)) {
+		$e_cost = 0;
 		$e_cost += $row['cost_actual'];
 
 	 }
@@ -227,6 +231,7 @@ function add_CLUB(){
 	 }
 
 	while ($row = mysql_fetch_assoc($result)) {
+		$club_cost = 0;
 		$club_cost += $row['club_cost'];
 
 	 }
@@ -245,6 +250,7 @@ function add_SKATESCHOOL(){
 	 }
 
 	while ($row = mysql_fetch_assoc($result)) {
+		$class_cost = 0;
 		$class_cost += $row['class_cost'];
 
 	 }
@@ -281,6 +287,9 @@ function skate_total() {
                 exit;
         }
         while ($row = mysql_fetch_assoc($result)) {
+					$skate_total = 0;
+					$punch_total = 0;
+					$punches_total = 0;
         $skate_total += $row['ice_time'];
         $punch_down = $row['ice_time'] / 30;
         $punches_total += $punch_down;
@@ -300,6 +309,7 @@ function punch_card(){
          }
 
         while ($row = mysql_fetch_assoc($result)) {
+					$punch_total = 0;
         $punch_total += $row['punch_time'];
         }
         return array($punch_total);
@@ -314,9 +324,13 @@ function punch_card(){
 function journal_videos() {
 
         require 'db_connect.php';
-        $jv_date = $_GET['date'];
 
-	if (empty($jv_date)){
+				if (isset($_GET['date']))
+				{
+				$jv_date = $_GET['date'];
+				}
+
+        if (empty($jv_date)){
 		$get_sql = 'SELECT ice_time.*, j_videos.* FROM ice_time, j_videos WHERE ice_time.has_video = 1 AND ice_time.date = j_videos.date order by ice_time.date desc';
 	} else {
 	        $get_sql = "SELECT * FROM j_videos WHERE date = '" . $jv_date . "'";

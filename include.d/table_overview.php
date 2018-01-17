@@ -1,6 +1,5 @@
 <?php
 
-
 $coach = add_COACHTIME2();
 $totals = add_costs_total();
 
@@ -19,11 +18,11 @@ echo '<tr class="small"><td class="text-right">$' . number_format($coach[0], 2, 
 
 $cost = $totals[0] + $totals[1] + $totals[2] + $totals[3] + $totals[4] + $totals[5] + $ice[0] + $coach[0];
 
-echo '</tbody></table> 
+echo '</tbody></table>
 
               <h4>Total</h4>
               <div class="text-muted">';
 
-echo '$' . $cost . '</div></div>'; 
+echo '$' . $cost . '</div></div>';
 
 ?>

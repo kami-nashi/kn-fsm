@@ -1,12 +1,8 @@
 <?php
-
 require 'include.d/db_connect.php';
 $ice = add_ICETIME();
-
-
-$sql_coach = 'select * from coaches';
 $sql_rink = 'select * from locations';
-$sql_itype = 'select * from ice_type';
+
 
 $result = mysql_query($sql_coach, $link);
 $other_result = mysql_query($sql_rink, $link);
@@ -18,26 +14,9 @@ if (!$result) {
 }
 
 echo "<form action='include.d/data_submit_maintenance.php' method='POST'>";
-echo "<p>Date: <input size='8' type='text' name='date' id='date'/> ";
-echo "Ice Time: <input size='4' type='text' name='ice_time' id='ice_time'/> ";
-echo "Ice Cost: <input size='6' type='text' name='ice_cost' id='ice_cost'/> ";
-echo '<select name="skate_type">';
-while ($row = mysql_fetch_assoc($ice_type)) {
-    unset($id, $type);
-    $id = $row['id'];
-    $type = $row['type'];
-    echo "<option value=".$id.">".$type."</option>";
-}
-echo "</select> ";
-echo "Coach Time: <input size='4' type='text' name='coach_time' id='coach_time'/> ";
-echo '<select name="coach_name">';
-while ($row = mysql_fetch_assoc($result)) {
-    unset($id, $name);
-    $id = $row['id'];
-    $fname = $row['coach_fname'];
-    echo "<option value=".$id.">".$fname."</option>";
-}
-echo "</select> ";
+echo "<p>Date: <input size='8' type='text' name='m_date' id='m_date'/> ";
+echo "Hours On: <input size='4' type='text' name='m_hours_on' id='m_hours_on'/> ";
+echo "Maintenance Cost: <input size='6' type='text' name='m_cost' id='m_cost'/> ";
 echo '<select name="rink_id">';
 while ($row = mysql_fetch_assoc($other_result)) {
     unset($id, $location_id);

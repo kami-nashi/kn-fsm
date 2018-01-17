@@ -24,7 +24,14 @@ require 'html_modal.php';
 
 echo '
           </li>
+<li class="nav-item">';
 
+echo '
+		<button class= "btntxt" id="myBtn2">Add Maintenance</button>';
+require 'html_modal_maintenance.php';
+
+echo '
+        </li>
         </ul>
       </div>
     </nav>

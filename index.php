@@ -10,6 +10,7 @@ $ice = add_ICETIME();
   require 'include.d/chart_overview.php';
 echo ' <div>';
   require 'include.d/chart_coach-ratio.php';
+  require 'include.d/chart_ratio-coach.php';
 echo ' </div>';
 echo ' <div>';
 	require 'include.d/chart_maintenance.php';

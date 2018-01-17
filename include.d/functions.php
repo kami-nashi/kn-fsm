@@ -120,11 +120,17 @@ function add_COACHTIME2() {
 
 	return array($coach_cost, $coach_hours, $coach_minutes, $coach_rate, $coach_time, $coach_conversion);
 }
+###############################################################
+#
+#  Maintenance Stuff
+#
+###############################################################
+
 
 function maintenance(){
-		$m_hours = 0;
-		$m_cost = 0;
-	  require 'db_connect.php';
+	$m_hours = 0;
+	$m_cost = 0;
+	require 'db_connect.php';
 
 	$sql = 'select * from maintenance';
 	$result = mysql_query($sql, $link);
@@ -146,6 +152,32 @@ function maintenance(){
 	return array($m_hours, $m_cost, $m_on, $m_remaining);
 }
 
+function maintenance_table(){
+	require 'db_connect.php';
+
+	$m_sql = 'select * from maintenance, locations where maintenance.m_location = locations.id order by m_date desc';
+
+	$result = mysql_query($m_sql, $link);
+	if (!$result) {
+	    echo "DB Error, could not query the database\n";
+	    echo 'MySQL Error: ' . mysql_error();
+	    exit;
+	}
+
+	while ($row = mysql_fetch_assoc($result)) {
+	  if (isset($_GET['ice_time']))
+	  {
+	  $total_ice += $_GET['ice_time'];
+	  }
+
+	  if (isset($_GET['ice_cost']))
+	  {
+	  $ice_cost += $_GET['ice_cost'];
+	  }
+
+	    echo "<tr><td>" . $row['m_date'] . "</td><td>" . $row['m_hours_on'] . "</td><td>$" . $row['m_cost'] . "</td><td>" . $row['location_id'] . "</td><td>" . $row['location_city'] . "</td><td>" . $row['location_state'] . "</td></tr>";
+	}
+}
 
 function add_TOTALS(){
 	$ice = add_ICETIME();

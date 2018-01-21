@@ -1,43 +1,41 @@
 <?php
 
-echo' 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
+#opening html of modal1
+echo'
+<div id="modalOne" class="modal">
   <div class="modal-content">
     <div class="modal-header">
+    <h2>Add Session Time</h2>
       <span class="close">&times;</span>
-      <h2>Add Session Time</h2>
-    </div>';
+        </div>
+    <div>
+';
 
 require 'include.d/data_form.php';
 
+#closing html of modal1 and opening of modal2
 echo '
+    </div>
+  </div>
 </div>
 
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
+<div id="modalTwo" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Add Maintenance</h2>
+        <span class="close">&times;</span>
+         </div>
+    <div>
+';
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+require 'include.d/data_form_maintenance.php';
 
 
-</script>
+#closing html of modal2
+echo '
+    </div>
+  </div>
+</div>
 ';
 
 ?>

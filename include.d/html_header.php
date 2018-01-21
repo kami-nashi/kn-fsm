@@ -17,16 +17,19 @@ echo '
 
     <!-- Custom styles for this template -->
     <link href="http://www.kami-nashi.com/css/dashboard.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-';
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>';
+
+## bring in css for modals
+    require 'include.d/style_modal.php';
+    
+## bring in js for modals, maybe move to js file later
+    require 'include.d/js_modals.php';
 
 
 echo '
   </head>
 
   <body>';
-
-require 'style_modal.php';
 
 
 ?>

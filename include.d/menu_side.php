@@ -19,16 +19,16 @@ echo '
             <a class="nav-link" href="#">Login(Disabled)</a>
           </li>
           <li class="nav-item">
-		<button class= "btntxt" id="myBtn">Update Time</button>';
-require 'html_modal.php';
+		<button class="btntxt" data-modal="modalOne">Update Time</button>';
 
 echo '
           </li>
 <li class="nav-item">';
 
 echo '
-		<button class= "btntxt" id="myBtn2">Add Maintenance</button>';
-require 'html_modal_maintenance.php';
+		<button class="btntxt" data-modal="modalTwo">Add Maintenance</button></div>
+';
+require 'html_modal.php';
 
 echo '
         </li>

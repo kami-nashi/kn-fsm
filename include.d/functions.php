@@ -1,65 +1,62 @@
 <?php
 
-function db_stuff(){
-	require 'db_connect.php';
-	$sql = $sql_query;
-	$result = mysql_query($sql, $link);
-		if (!$result) {
-				echo "DB Error, could not query the database\n";
-				echo 'MySQL Error: ' . mysql_error();
-				exit;
-			}
-}
+################################################################################
+# import the db stuff, get the sql string, return the data
+################################################################################
+function db_stuff($sql){
+  require 'db_connect.php';
+  $result = mysql_query($sql, $link);
+  if (!$result) {
+    echo "DB Error, could not query the database\n";
+    echo 'MySQL Error: ' . mysql_error();
+    exit;
+  }
+
+  return $result;
+  }
 
 ################################################################################
-#
-# total monthly time spent on ice
-#
+# almost every time we get ice time, we need to convert the minutes to hours
 ################################################################################
+function basicmath($icem){
+	$hours = $icem / 60;
+	return $hours;
+  }
 
+################################################################################
+# total time spent on ice in current month
+################################################################################
 function diff_icetime_current(){
-	$month_current = 0;
+  $month_current = 0;
+  $sql = 'SELECT ice_time FROM ice_time WHERE MONTH(CURDATE()) = MONTH(date) AND YEAR(CURDATE()) = YEAR(date)';
+  $result = db_stuff($sql);
 
-	require 'db_connect.php';
-	$sql = 'SELECT ice_time FROM ice_time WHERE MONTH(CURDATE()) = MONTH(date) AND YEAR(CURDATE()) = YEAR(date)';
-	$result = mysql_query($sql, $link);
+  while ($row = mysql_fetch_assoc($result)) {
+    $month_current += $row['ice_time'];
+  }
+  $ice_hours = basicmath($month_current);
+  return array($ice_hours);
+  }
 
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-			}
-				while ($row = mysql_fetch_assoc($result)) {
-			    		$month_current += $row['ice_time'];
-				 }
-
-				# basic math
-				$ice_hours = $month_current / 60;
-				return array($ice_hours);
-}
-
+################################################################################
+# total time spent on ice in previous month
+################################################################################
 function diff_icetime_last(){
 	$month_current = 0;
-	require 'db_connect.php';
-
 	$sql = 'SELECT ice_time FROM ice_time WHERE MONTH(CURDATE()) - 1= MONTH(date) AND YEAR(CURDATE()) = YEAR(date)';
-	$result = mysql_query($sql, $link);
-
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-			}
+	$result = db_stuff($sql);
 
 				while ($row = mysql_fetch_assoc($result)) {
 			    		$month_current += $row['ice_time'];
 				 }
-
-				# basic math
-				$ice_hours = $month_current / 60;
+				$ice_hours = basicmath($month_current);
 				return array($ice_hours);
 }
 
+##
+# just give us an array of the values from the functions telling
+# us about the time spent on ice this month and last
+##
 function diff_icetime(){
 	$current = diff_icetime_current();
 	$previous = diff_icetime_last();
@@ -67,29 +64,27 @@ function diff_icetime(){
 	return array($current[0], $previous[0]);
 }
 
+###
+# this function is our money maker
+# get all the things from the ice_time table
+# also add up the cost and the time as minutes
+# then convert the minutes to hours
+###
 function add_ICETIME() {
 	$ice = 0;
 	$ice_cost = 0;
-
-	require 'db_connect.php';
 	$sql = 'select * from ice_time';
-	$result = mysql_query($sql, $link);
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-	 }
+	$result = db_stuff($sql);
 
 	while ($row = mysql_fetch_assoc($result)) {
     		$ice += $row['ice_time'];
     		$ice_cost += $row['ice_cost'];
 	 }
 
-	# basic math
-	$ice_time = $ice / 60;
-
+	$ice_time = basicmath($month_current);
 	return array($ice_cost, $ice_time);
 }
+
 
 function add_COACHTIME2() {
   $coach_time = 0;
@@ -97,17 +92,10 @@ function add_COACHTIME2() {
 	$coach_conversion = 0;
 	$coach_cost = 0;
 	$coach_minutes = 0;
-	require 'db_connect.php';
+	$sql = 'SELECT ice_time.*, coaches.* FROM ice_time, coaches WHERE ice_time.coach_id = coaches.id';
+	$result = db_stuff($sql);
 
-	$get_sql = 'SELECT ice_time.*, coaches.* FROM ice_time, coaches WHERE ice_time.coach_id = coaches.id';
-	$coach_result = mysql_query($get_sql, $link);
-		if (!$coach_result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-	 }
-
-	while ($row = mysql_fetch_assoc($coach_result)) {
+	while ($row = mysql_fetch_assoc($result)) {
     		$coach_minutes += $row['coach_time'];
     		$coach_time = $row['coach_time'];
     		$coach_rate = $row['coach_rate'];
@@ -115,33 +103,22 @@ function add_COACHTIME2() {
 		    $coach_cost += $coach_time * $coach_conversion;
 	}
 
-	$coach_hours = $coach_minutes / 60;
+	$coach_hours = basicmath($coach_minutes);
 	$coach_total = $coach_minutes * $coach_conversion;
 
 	return array($coach_cost, $coach_hours, $coach_minutes, $coach_rate, $coach_time, $coach_conversion);
-}
+  }
+
 ###############################################################
-#
 #  Maintenance Stuff
-#
 ###############################################################
-
-
 function maintenance(){
 	$m_hours = 0;
 	$m_cost = 0;
-	require 'db_connect.php';
-
 	$sql = 'select * from maintenance';
-	$result = mysql_query($sql, $link);
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-	 }
+	$result = db_stuff($sql);
 
 	while ($row = mysql_fetch_assoc($result)) {
-
     		$m_hours += $row['m_hours_on'];
     		$m_cost += $row['m_cost'];
 	 }
@@ -152,54 +129,40 @@ function maintenance(){
 	return array($m_hours, $m_cost, $m_on, $m_remaining);
 }
 
+###
+# build maintenance data and print the rows
+###
 function maintenance_table(){
-	require 'db_connect.php';
-
-	$m_sql = 'select * from maintenance, locations where maintenance.m_location = locations.id order by m_date desc';
-
-	$result = mysql_query($m_sql, $link);
-	if (!$result) {
-	    echo "DB Error, could not query the database\n";
-	    echo 'MySQL Error: ' . mysql_error();
-	    exit;
-	}
+	$sql = 'select * from maintenance, locations where maintenance.m_location = locations.id order by m_date desc';
+	$result = db_stuff($sql);
 
 	while ($row = mysql_fetch_assoc($result)) {
 	  if (isset($_GET['ice_time']))
-	  {
-	  $total_ice += $_GET['ice_time'];
-	  }
-
+	  {	  $total_ice += $_GET['ice_time'];	}
 	  if (isset($_GET['ice_cost']))
-	  {
-	  $ice_cost += $_GET['ice_cost'];
+	  {	  $ice_cost += $_GET['ice_cost'];	  }
+    echo "<tr><td>" . $row['m_date'] . "</td><td>" . $row['m_hours_on'] . "</td><td>$" . $row['m_cost'] . "</td><td>" . $row['location_id'] . "</td><td>" . $row['location_city'] . "</td><td>" . $row['location_state'] . "</td></tr>";
 	  }
-
-	    echo "<tr><td>" . $row['m_date'] . "</td><td>" . $row['m_hours_on'] . "</td><td>$" . $row['m_cost'] . "</td><td>" . $row['location_id'] . "</td><td>" . $row['location_city'] . "</td><td>" . $row['location_state'] . "</td></tr>";
-	}
 }
 
+###
+# total the cost of time on ice, with coach, maintenance, dump it into an array
+###
 function add_TOTALS(){
 	$ice = add_ICETIME();
 	$coach = add_COACHTIME2();
 	$maintenance = maintenance();
-
 	$cost = $ice[0] + $coach[0] + $maintenance[1];
-
 	return $cost;
 }
 
+###
+# add up data for competitions
+###
 function add_EVENTS_C(){
 	$c_cost = 0;
-	require 'db_connect.php';
-
-	$get_sql = 'SELECT * FROM events_c';
-	$result = mysql_query($get_sql, $link);
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-	 }
+  $sql = 'SELECT * FROM events_c';
+  $result = db_stuff($sql);
 
 	while ($row = mysql_fetch_assoc($result)) {
 		$c_cost += $row['e_cost'];
@@ -208,17 +171,13 @@ function add_EVENTS_C(){
 	return array($c_cost);
 }
 
+###
+# add up performances data
+###
 function add_EVENTS_P(){
-		$p_cost = 0;
-		require 'db_connect.php';
-
-	$get_sql = 'SELECT * FROM events_p';
-	$result = mysql_query($get_sql, $link);
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-	 }
+	$p_cost = 0;
+	$sql = 'SELECT * FROM events_p';
+	$result = db_stuff($sql);
 
 	while ($row = mysql_fetch_assoc($result)){
 		$p_cost += $row['e_cost'];
@@ -227,17 +186,13 @@ function add_EVENTS_P(){
 	return array($p_cost);
 }
 
+###
+# add up data for equipment
+###
 function add_EQUIP(){
-		$e_cost = 0;
-		require 'db_connect.php';
-
-	$get_sql = 'SELECT * FROM equip_manifest';
-	$result = mysql_query($get_sql, $link);
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-	 }
+	$e_cost = 0;
+	$sql = 'SELECT * FROM equip_manifest';
+	$result = db_stuff($sql);
 
 	while ($row = mysql_fetch_assoc($result)) {
 		$e_cost += $row['cost_actual'];
@@ -245,18 +200,13 @@ function add_EQUIP(){
 
 	return array($e_cost);
 }
-
+###
+# add up data for cost of clubs
+###
 function add_CLUB(){
 	$club_cost = 0;
-	require 'db_connect.php';
-
-	$get_sql = 'SELECT * FROM club_membership';
-	$result = mysql_query($get_sql, $link);
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-	 }
+	$sql = 'SELECT * FROM club_membership';
+	$result = db_stuff($sql);
 
 	while ($row = mysql_fetch_assoc($result)) {
 		$club_cost += $row['club_cost'];
@@ -265,17 +215,13 @@ function add_CLUB(){
 	return array($club_cost);
 }
 
+###
+# add up data for cost of skating schools
+###
 function add_SKATESCHOOL(){
 	$class_cost = 0;
-	require 'db_connect.php';
-
-	$get_sql = 'SELECT * FROM class_skate_school';
-	$result = mysql_query($get_sql, $link);
-		if (!$result) {
-    		echo "DB Error, could not query the database\n";
-    		echo 'MySQL Error: ' . mysql_error();
-    		exit;
-	 }
+	$sql = 'SELECT * FROM class_skate_school';
+ 	$result = db_stuff($sql);
 
 	while ($row = mysql_fetch_assoc($result)) {
 		$class_cost += $row['class_cost'];
@@ -284,6 +230,9 @@ function add_SKATESCHOOL(){
 	return array($class_cost);
 }
 
+###
+# total all the things
+###
 function add_costs_total(){
 
 	$time_coach = add_COACHTIME2();
@@ -295,26 +244,18 @@ function add_costs_total(){
 	$cost_class = add_SKATESCHOOL();
 
 	return array($cost_equip[0], $cost_maint[1], $cost_class[0], $events_p[0], $cost_club[0], $events_c[0]);
-
 }
 
 ################################################################################################################
 ##						Calculate Punch Cards					      ##
 ################################################################################################################
-
 function skate_total() {
 	$skate_total = 0;
 	$punch_total = 0;
 	$punches_total = 0;
-	require 'db_connect.php';
+	$sql = 'SELECT * FROM ice_time WHERE skate_type = 8';
+ 	$result = db_stuff($sql);
 
-        $sql = 'SELECT * FROM ice_time WHERE skate_type = 8';
-        $result = mysql_query($sql, $link);
-                if (!$result) {
-                echo "DB Error, could not query the database\n";
-                echo 'MySQL Error: ' . mysql_error();
-                exit;
-        }
         while ($row = mysql_fetch_assoc($result)) {
         $skate_total += $row['ice_time'];
         $punch_down = $row['ice_time'] / 30;
@@ -323,60 +264,40 @@ function skate_total() {
        return array($skate_total, $punches_total);
 }
 
+
+
 function punch_card(){
 	$punch_total = 0;
-	require 'db_connect.php';
-
-        $sql = 'SELECT * FROM ice_punch';
-        $result = mysql_query($sql, $link);
-                if (!$result) {
-                echo "DB Error, could not query the database\n";
-                echo 'MySQL Error: ' . mysql_error();
-                exit;
-         }
+	$sql = 'SELECT * FROM ice_punch';
+ 	$result = db_stuff($sql);
 
         while ($row = mysql_fetch_assoc($result)) {
         $punch_total += $row['punch_time'];
         }
         return array($punch_total);
-
 }
-
 
 ################################################################################################################
 ##                                              Journal/Video Handling                                        ##
 ################################################################################################################
-
 function journal_videos() {
-        require 'db_connect.php';
+	$sql = 'SELECT * FROM ice_punch';
 
 				if (isset($_GET['date']))
-				{
-				$jv_date = $_GET['date'];
-				}
-
-        if (empty($jv_date)){
-		$get_sql = 'SELECT ice_time.*, j_videos.* FROM ice_time, j_videos WHERE ice_time.has_video = 1 AND ice_time.date = j_videos.date order by ice_time.date desc';
-	} else {
-	        $get_sql = "SELECT * FROM j_videos WHERE date = '" . $jv_date . "'";
-
-	}
-        $video_result = mysql_query($get_sql, $link);
-                if (!$video_result) {
-                echo "DB Error, could not query the database\n";
-                echo 'MySQL Error: ' . mysql_error();
-                exit;
-         }
+				{ $jv_date = $_GET['date'];	} if (empty($jv_date)){
+		      $sql = 'SELECT ice_time.*, j_videos.* FROM ice_time, j_videos WHERE ice_time.has_video = 1 AND ice_time.date = j_videos.date order by ice_time.date desc';
+	      } else {
+	        $sql = "SELECT * FROM j_videos WHERE date = '" . $jv_date . "'";
+      	}
+        $result = db_stuff($sql);
 
         echo "<table class='table table-striped'> <thead>";
         echo "<tr><td> Date </td><td> Description </td><td> Video URL </td><td> Sharing Platform </tr></td>";
-	echo "</thead><tbody>";
-        while ($row = mysql_fetch_assoc($video_result)) {
-
-        echo "<tr><td>" . $row['date'] . "</td><td>" . $row['name']  . "</td><td><a target='_blank' href='" . $row['url'] . "'>" . $row['url'] . "</a></td><td>" . $row['sharing_platform']  . "</tr></td>";
-        }
+	      echo "</thead><tbody>";
+        while ($row = mysql_fetch_assoc($result)) {
+          echo "<tr><td>" . $row['date'] . "</td><td>" . $row['name']  . "</td><td><a target='_blank' href='" . $row['url'] . "'>" . $row['url'] . "</a></td><td>" . $row['sharing_platform']  . "</tr></td>";
+          }
         echo "</tbody></table>";
 }
-
 
 ?>

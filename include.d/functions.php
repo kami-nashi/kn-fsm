@@ -81,7 +81,7 @@ function add_ICETIME() {
     		$ice_cost += $row['ice_cost'];
 	 }
 
-	$ice_time = basicmath($month_current);
+	$ice_time = basicmath($ice);
 	return array($ice_cost, $ice_time);
 }
 

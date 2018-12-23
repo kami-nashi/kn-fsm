@@ -1,5 +1,4 @@
 <?php
-require_once 'include.d/db_connect.php';
 require 'include.d/functions.php';
 require 'include.d/html_header.php';
 

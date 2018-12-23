@@ -1,5 +1,4 @@
 <?php
-require 'include.d/db_connect.php';
 require 'include.d/functions.php';
 
 $ice = add_ICETIME();

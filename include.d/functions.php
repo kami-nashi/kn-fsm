@@ -328,13 +328,14 @@ function table_sessions(){
       }
    }
 
-function punches_tables(){
-$sql = 'SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = locations.id AND ice_punch.id IN (SELECT MAX(id) FROM ice_punch GROUP BY punch_location)'
-$result = db_stuff($sql);
+   function punches_tables(){
+   $sql = 'SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = locations.id AND ice_punch.id IN (SELECT MAX(id) FROM ice_punch GROUP BY punch_location)';
+   $result = db_stuff($sql);
 
-      while ($row = mysql_fetch_assoc($result)) {
-        print_r($row);
-        echo $row['location_id']." ".$row['location_city']." ".$row['location_state']." ";
+         while ($row = mysql_fetch_assoc($result)) {
+           #print_r($row);
+           echo "<p>".$row['location_id']." ".$row['location_city']." ".$row['location_state']." "."<p/>";
+
  }
 }
 ?>

@@ -247,7 +247,7 @@ function add_costs_total(){
 }
 
 ################################################################################################################
-##						Calculate Punch Cards					      ##
+##						Calculate Punch Cards					                                                                  ##
 ################################################################################################################
 function skate_total() {
 	$skate_total = 0;
@@ -327,4 +327,14 @@ function table_sessions(){
       $final_coach_rate += $row['coach_time'] * $converted_coach_rate;
       }
    }
+
+function punches_tables(){
+sql = 'SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = locations.id AND ice_punch.id IN (SELECT MAX(id) FROM ice_punch GROUP BY punch_location)'
+$result = db_stuff($sql);
+
+      while ($row = mysql_fetch_assoc($result)) {
+        print_r($row);
+        echo $row['location_id']." ".$row['location_city']." ".$row['location_state']." ";
+ }
+}
 ?>

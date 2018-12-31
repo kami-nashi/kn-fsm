@@ -329,7 +329,7 @@ function table_sessions(){
    }
 
 function punches_tables(){
-sql = 'SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = locations.id AND ice_punch.id IN (SELECT MAX(id) FROM ice_punch GROUP BY punch_location)'
+$sql = 'SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = locations.id AND ice_punch.id IN (SELECT MAX(id) FROM ice_punch GROUP BY punch_location)'
 $result = db_stuff($sql);
 
       while ($row = mysql_fetch_assoc($result)) {

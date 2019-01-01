@@ -336,17 +336,16 @@ $sql = 'SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = loca
 $result = db_stuff($sql);
 
       while ($row = mysql_fetch_assoc($result)) {
-        #print_r($row);
         echo "<p><h1>".$row['location_id']." ".$row['location_city']." ".$row['location_state']." "."1 </h1><p/>   ";
         $sql2 = "SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = ".$row['punch_location']." AND locations.id = ".$row['punch_location'];
-        $sql3 = "SELECT * FROM ice_time, ice_punch, locations WHERE ice_time.skate_type = 8 AND ice_punch.punch_location = ".$row['punch_location']." AND locations.id = ".$row['punch_location'];
+        $sql3 = "SELECT DISTINCT ice_time.date, ice_time.ice_time, ice_time.skate_type, ice_time.rink_id, ice_punch.punch_time, ice_punch.punch_cost, ice_punch.punch_location, locations.* FROM ice_time, ice_punch, locations WHERE ice_time.skate_type = 8 AND ice_punch.punch_location = ".$row['punch_location']." AND locations.id = ".$row['punch_location'];
         $result2 = db_stuff($sql2);
-        $result3 = db_stuff($sql3);
+        $result3 = db_stuff($sql3); # Get raw total of minutes skated at rinks on punch where the rink ID and the card ID match
         $sum_punchtime = 0;
         $sum_punchcost = 0;
         while ($rowa = mysql_fetch_assoc($result2)) {
            $sum_punchtime += $row['punch_time'];
-           $punch_hours = $sum_punchtime / 30;
+           $punch_hours = $sum_punchtime / 60;
            $sum_punchcost += $row['punch_cost'];
            echo "<p><h2>".$rowa['location_id']." ".$rowa['location_city']." ".$rowa['location_state']." " .$punch_hours."</h2><p/>";
         }
@@ -354,11 +353,16 @@ $result = db_stuff($sql);
         $punch_total = 0;
         while ($rowb = mysql_fetch_assoc($result3)) {
            $skate_total += $rowb['ice_time'];
-           $punch_down = $rowb['ice_time'] / 30;
+           $punch_down = $rowb['ice_time'] / 60;
            $punches_total += $punch_down;
         }
-        echo $punch_hours." ".$punches_total;
-
+        echo "Raw Minutes - Skated and Punched: ".$skate_total."<br>";
+        echo "Raw Minutes - Total on All Cards: ".$sum_punchtime."<br>";
+        echo "Hours On All Cards....... ".$punch_hours."<br>";
+        echo "Hours Skated Punched... ".$punches_total."<br>";
+        $diff = $punch_hours - $punches_total;
+        echo "Hours Remaining............".$diff;
    }
 }
+
 ?>

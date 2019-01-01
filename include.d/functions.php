@@ -328,14 +328,37 @@ function table_sessions(){
       }
    }
 
-   function punches_tables(){
-   $sql = 'SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = locations.id AND ice_punch.id IN (SELECT MAX(id) FROM ice_punch GROUP BY punch_location)';
-   $result = db_stuff($sql);
+###
+# logic for building out punch card data for multiple location
+###
+function punches_tables(){
+$sql = 'SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = locations.id AND ice_punch.id IN (SELECT MAX(id) FROM ice_punch GROUP BY punch_location)';
+$result = db_stuff($sql);
 
-         while ($row = mysql_fetch_assoc($result)) {
-           #print_r($row);
-           echo "<p>".$row['location_id']." ".$row['location_city']." ".$row['location_state']." "."<p/>";
+      while ($row = mysql_fetch_assoc($result)) {
+        #print_r($row);
+        echo "<p><h1>".$row['location_id']." ".$row['location_city']." ".$row['location_state']." "."1 </h1><p/>   ";
+        $sql2 = "SELECT * FROM ice_punch, locations WHERE ice_punch.punch_location = ".$row['punch_location']." AND locations.id = ".$row['punch_location'];
+        $sql3 = "SELECT * FROM ice_time, ice_punch, locations WHERE ice_time.skate_type = 8 AND ice_punch.punch_location = ".$row['punch_location']." AND locations.id = ".$row['punch_location'];
+        $result2 = db_stuff($sql2);
+        $result3 = db_stuff($sql3);
+        $sum_punchtime = 0;
+        $sum_punchcost = 0;
+        while ($rowa = mysql_fetch_assoc($result2)) {
+           $sum_punchtime += $row['punch_time'];
+           $punch_hours = $sum_punchtime / 30;
+           $sum_punchcost += $row['punch_cost'];
+           echo "<p><h2>".$rowa['location_id']." ".$rowa['location_city']." ".$rowa['location_state']." " .$punch_hours."</h2><p/>";
+        }
+        $skate_total = 0;
+        $punch_total = 0;
+        while ($rowb = mysql_fetch_assoc($result3)) {
+           $skate_total += $rowb['ice_time'];
+           $punch_down = $rowb['ice_time'] / 30;
+           $punches_total += $punch_down;
+        }
+        echo $punch_hours." ".$punches_total;
 
- }
+   }
 }
 ?>
